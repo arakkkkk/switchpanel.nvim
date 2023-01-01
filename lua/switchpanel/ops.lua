@@ -4,29 +4,15 @@ local panel = require("switchpanel.panel")
 function M.get_ops(options)
 	local ops = {
 		tab_repeat = true,
-		mappings = {
-			n = {
-				{"H", panel.tabnext }
-			}
-		},
-		panel = {
-			left = {
-				{
-					["aerial.nvim"] = {
-						open = "AerialOpen",
-						close = "AerialClose",
-						height = 1,
-					},
-				},
-				{
-					["nvim-tree.lua"] = {
-						open = "NvimTreeToggle",
-						close = "NvimTreeToggle",
-						height = 1,
-					},
-				},
-			},
-		},
+		-- mappings = {
+		-- 	n = {
+		-- 		{"H", panel.tabnext }
+		-- 	}
+		-- },
+		builtin = {
+			"files",
+			"outline",
+		}
 	}
 	ops = require("switchpanel.utils").tableMerge(ops, options)
 	return ops

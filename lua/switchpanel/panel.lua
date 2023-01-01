@@ -1,86 +1,78 @@
 local M = {}
-local ops = require("switchpanel").ops
 
-M.active = {
-	left = nil, -- builtin
-	right = nil, -- builtin
-}
-M.tabnr = {
-	left = 1,
-	right = 1,
-}
-M.resume = {
-	left = nil, -- builtin
-	right = nil, -- builtin
-}
+M.active = nil
+M.tabnr = 1
+M.resume = nil
 
-
-function M.switch(side, number)
-	assert(side == "left" or side == "left")
-	local builtin = ops.panel[side][number]
+function M.switch(number)
+	local ops = require("switchpanel").ops
+	local builtin = ops.builtin[number]
 	--  TODO: change to error and return
-	assert(builtin, "Count of " .. side .. "panel is less than " .. number)
+	assert(builtin, "Count of panel is less than " .. number)
 
 	if M.active then
-	  M.close(M.active[side], side)
+		M.close(M.active)
 	end
-	M.open(builtin, side)
+	M.open(builtin)
 	M.tabnr = number
 end
 
-function M.tabnext(side)
-	if not M.active[side] then
+function M.tabnext()
+	local ops = require("switchpanel").ops
+	if not M.active then
 		return
 	end
 
 	local next_tabnr = M.tabnr + 1
-	if M.tabnr[side] == #ops.panel[side] then
-		if not ops.tab_repeat then
+	if M.tabnr == #ops.builtin then
+		if not ops.builtin then
 			return
 		end
 		next_tabnr = 1
 	end
 
-	M.close(M.active[side], side)
-	M.open(M.ops[side][next_tabnr], side)
+	M.close(M.active)
+	M.open(ops.builtin[next_tabnr])
 end
 
-function M.tabprevious(side)
-	if not M.active[side] then
+function M.tabprevious()
+	local ops = require("switchpanel").ops
+	if not M.active then
 		return
 	end
 
 	local previous_tabnr = M.tabnr - 1
-	if M.tabnr[side] == #ops.panel[side] then
+	if M.tabnr == #ops.builtin then
 		if not ops.tab_repeat then
 			return
 		end
-		previous_tabnr = #ops.panel[side]
+		previous_tabnr = #ops.builtin
 	end
 
-	M.close(M.active[side], side)
-	M.open(M.ops[side][previous_tabnr], side)
+	M.close(M.active)
+	M.open(ops.builtin[previous_tabnr])
 end
 
-function M.toggle(side)
-  if not M.active[side] then
-  	-- open
-	  M.open(M.resume[side], side)
-  else
-  	-- close
-	  M.close(M.active[side], side)
-  end
+function M.toggle()
+	local ops = require("switchpanel").ops
+	if not M.active then
+		-- open
+		M.open(ops.builtin[M.tabnr])
+	else
+		-- close
+		M.close(M.active)
+	end
 end
 
-function M.close(builtin, side)
-	M.active[side] = nil
-	M.resume[side] = builtin
+function M.close(builtin)
+	M.active = nil
+	M.resume = builtin
 	vim.cmd(builtin.close)
 end
 
-function M.open(builtin, side)
-	M.active[side] = builtin
-	M.resume[side] = nil
+function M.open(builtin)
+	M.active = builtin
+	M.resume = nil
 	vim.cmd(builtin.open)
 end
 
