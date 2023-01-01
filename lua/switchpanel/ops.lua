@@ -1,8 +1,14 @@
 local M = {}
+local panel = require("switchpanel.panel")
 
 function M.get_ops(options)
 	local ops = {
 		tab_repeat = true,
+		mappings = {
+			n = {
+				{"H", panel.tabnext }
+			}
+		},
 		panel = {
 			left = {
 				{
