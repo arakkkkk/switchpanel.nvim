@@ -2,7 +2,6 @@ local switchpanel = {}
 
 
 function switchpanel.setup(ops)
-	ops = ops or {}
 	ops = require("switchpanel.ops").get_ops(ops)
 	switchpanel.ops = ops
 	require("switchpanel.command")
