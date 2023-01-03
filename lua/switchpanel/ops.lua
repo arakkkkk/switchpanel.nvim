@@ -11,11 +11,13 @@ function M.get_ops(options)
 			{"3", "SwitchPanelSwitch 3" },
 			{"4", "SwitchPanelSwitch 4" },
 			{"5", "SwitchPanelSwitch 5" },
+			{"J", "SwitchPanelNext" },
+			{"K", "SwitchPanelPrevious" },
 		},
 
 		builtin = {
-			"aerial.nvim",
-			-- "nvim-tree.lua",
+			-- "aerial.nvim",
+			"nvim-tree.lua",
 			"sidebar.nvim"
 		}
 	}

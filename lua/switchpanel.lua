@@ -5,6 +5,7 @@ function switchpanel.setup(ops)
 	ops = require("switchpanel.ops").get_ops(ops)
 	switchpanel.ops = ops
 	require("switchpanel.command")
+	require("switchpanel.autocmd")
 
 	local default_builtin = require("switchpanel.builtin")
 	for i, builtin in pairs(ops.builtin) do
