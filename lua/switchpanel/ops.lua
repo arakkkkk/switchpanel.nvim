@@ -3,6 +3,14 @@ local panel = require("switchpanel.panel")
 
 function M.get_ops(options)
 	local ops = {
+		panel_list = {
+			show = true,
+			background = "Blue",
+			color = "none",
+		},
+
+		width = 30,
+
 		tab_repeat = true,
 		
 		mappings = {
