@@ -9,24 +9,24 @@ return {
 	},
 
 	["nvim-tree.lua"] = {
-		open = "NvimTreeToggle",
-		close = "NvimTreeToggle",
+		open = "NvimTreeOpen",
+		close = "NvimTreeClose",
 		filetype = "NvimTree",
 		icon = "F",
 		option = {},
 	},
 
 	["sidebar.nvim"] = {
-		open = "NvimTreeToggle",
-		close = "NvimTreeToggle",
+		open = "SidebarNvimOpen",
+		close = "SidebarNvimClose",
 		filetype = "SidebarNvim",
 		icon = "S",
 		option = {},
 	},
 
 	["undotree"] = {
-		open = "UndoTreeToggle",
-		close = "UndoTreeToggle",
+		open = "UndotreeShow",
+		close = "UndotreeHide",
 		filetype = "undotree",
 		icon = "U",
 		option = {},

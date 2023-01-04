@@ -24,9 +24,9 @@ function M.get_ops(options)
 		},
 
 		builtin = {
-			-- "aerial.nvim",
 			"nvim-tree.lua",
-			"sidebar.nvim"
+			"sidebar.nvim",
+			"undotree",
 		}
 	}
 	ops = require("switchpanel.utils").tableMerge(ops, options)

@@ -1,4 +1,5 @@
 local M = {}
+local panel_list = require("switchpanel.panel_list")
 
 M.active = nil
 M.tabnr = 1
@@ -68,12 +69,16 @@ function M.close(builtin)
 	M.active = nil
 	M.resume = builtin
 	vim.cmd(builtin.close)
+	print("close: ", builtin.close)
 end
 
 function M.open(builtin)
+	panel_list.close()
 	M.active = builtin
 	M.resume = nil
 	vim.cmd(builtin.open)
+	print("open: ", builtin.open)
+	panel_list.open()
 end
 
 return M
