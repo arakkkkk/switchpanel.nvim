@@ -2,7 +2,7 @@
 Integrate a plugin to display NeoVim sidebars and switch between them like a VSCode sidebar.
 
 ## demo
-![img](uploads/demo.gif)
+![img](doc/demo.gif)
 
 ## Requirements
 - [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
