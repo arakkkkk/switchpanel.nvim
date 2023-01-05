@@ -8,7 +8,6 @@ M.resume = nil
 function M.switch(number)
 	local ops = require("switchpanel").ops
 	local builtin = ops.builtin[number]
-	--  TODO: change to error and return
 	assert(builtin, "Count of panel is less than " .. number)
 
 	if M.active then
@@ -24,16 +23,17 @@ function M.tabnext()
 		return
 	end
 
-	local next_tabnr = M.tabnr + 1
 	if M.tabnr == #ops.builtin then
 		if not ops.builtin then
 			return
 		end
-		next_tabnr = 1
+		M.tabnr = 1
+	else
+		M.tabnr = M.tabnr + 1
 	end
 
 	M.close(M.active)
-	M.open(ops.builtin[next_tabnr])
+	M.open(ops.builtin[M.tabnr])
 end
 
 function M.tabprevious()
@@ -42,16 +42,17 @@ function M.tabprevious()
 		return
 	end
 
-	local previous_tabnr = M.tabnr - 1
-	if M.tabnr == #ops.builtin then
+	if M.tabnr == 0 then
 		if not ops.tab_repeat then
 			return
 		end
-		previous_tabnr = #ops.builtin
+		M.tabnr = #ops.builtin
+	else
+		M.tabnr = M.tabnr - 1
 	end
 
 	M.close(M.active)
-	M.open(ops.builtin[previous_tabnr])
+	M.open(ops.builtin[M.tabnr])
 end
 
 function M.toggle()
@@ -66,19 +67,18 @@ function M.toggle()
 end
 
 function M.close(builtin)
+	panel_list.close()
 	M.active = nil
 	M.resume = builtin
 	vim.cmd(builtin.close)
-	print("close: ", builtin.close)
 end
 
 function M.open(builtin)
-	panel_list.close()
 	M.active = builtin
 	M.resume = nil
 	vim.cmd(builtin.open)
-	print("open: ", builtin.open)
 	panel_list.open()
+	panel_list.setCursor()
 end
 
 return M

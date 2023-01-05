@@ -6,10 +6,13 @@ function M.get_ops(options)
 		panel_list = {
 			show = true,
 			background = "Blue",
+			selected = "LightBlue",
 			color = "none",
 		},
 
 		width = 30,
+
+		focus_on_open = true,
 
 		tab_repeat = true,
 		
@@ -17,11 +20,10 @@ function M.get_ops(options)
 			{"1", "SwitchPanelSwitch 1" },
 			{"2", "SwitchPanelSwitch 2" },
 			{"3", "SwitchPanelSwitch 3" },
-			{"4", "SwitchPanelSwitch 4" },
-			{"5", "SwitchPanelSwitch 5" },
+			-- {"4", "SwitchPanelSwitch 4" },
+			-- {"5", "SwitchPanelSwitch 5" },
 			{"J", "SwitchPanelNext" },
-			{"K", "SwitchPanelPrevious" },
-		},
+			{"K", "SwitchPanelPrevious" }, },
 
 		builtin = {
 			"nvim-tree.lua",

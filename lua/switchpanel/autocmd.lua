@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 					if type(keymap[2]) == "string" then
 						cmd = "<cmd>" .. keymap[2] .. "<cr>"
 					end
-					vim.keymap.set("n", keymap[1], cmd, { silent = true })
+					vim.keymap.set("n", keymap[1], cmd, { silent = true, buffer = vim.api.nvim_get_current_buf() })
 				end
 			end
 		end

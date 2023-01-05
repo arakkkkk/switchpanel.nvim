@@ -14,6 +14,7 @@ function switchpanel.setup(ops)
 
 	require("switchpanel.command")
 	require("switchpanel.autocmd")
+
 end
 
 return switchpanel

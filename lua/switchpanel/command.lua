@@ -14,6 +14,13 @@ vim.api.nvim_create_user_command("SwitchPanelToggle", function(arg)
 	require("switchpanel.panel").toggle()
 end, {})
 
+vim.api.nvim_create_user_command("SwitchPanelListOpen", function(arg)
+	require("switchpanel.panel_list").open()
+end, {})
+vim.api.nvim_create_user_command("SwitchPanelListClose", function(arg)
+	require("switchpanel.panel_list").close()
+end, {})
+
 vim.api.nvim_create_user_command("SwitchPanel", function(arg)
 	require("switchpanel.panel_list").open()
 end, {})

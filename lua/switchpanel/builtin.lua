@@ -3,7 +3,7 @@ return {
 	["aerial.nvim"] = {
 		open = "AerialOpen",
 		close = "AerialClose",
-		icon = "O",
+		icon = "",
 		filetype = "aerial",
 		option = {},
 	},
@@ -12,7 +12,7 @@ return {
 		open = "NvimTreeOpen",
 		close = "NvimTreeClose",
 		filetype = "NvimTree",
-		icon = "F",
+		icon = "",
 		option = {},
 	},
 
@@ -20,7 +20,7 @@ return {
 		open = "SidebarNvimOpen",
 		close = "SidebarNvimClose",
 		filetype = "SidebarNvim",
-		icon = "S",
+		icon = "",
 		option = {},
 	},
 
@@ -28,8 +28,10 @@ return {
 		open = "UndotreeShow",
 		close = "UndotreeHide",
 		filetype = "undotree",
-		icon = "U",
+		icon = "",
 		option = {},
 	},
 
 }
+--   ﱮ    הּ  פּ  﨧ﲵ               
+-- 
